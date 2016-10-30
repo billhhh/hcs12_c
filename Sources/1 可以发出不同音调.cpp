@@ -7,7 +7,8 @@
 #include "derivative.h"      /* derivative-specific definitions */
 
 
-  void MSDelay(unsigned int);
+void MSDelay(unsigned int);
+
 void main(void) 
 {
   /* put your own code here */
@@ -17,10 +18,20 @@ void main(void)
      
     for (;;) 			
       {
-       PTT = PTT | 0x20;      //make PT5=1
-      MSDelay(10);         //change the delay size to see what happens
-       PTT = PTT & 0xDF;      //Make PT5=0
-      MSDelay(10);         //change delay size....
+      
+        int a[10] = {1,12,3,12,1,14,3,14,5,13};  
+    
+        for(int i=0;i<10;++i) {
+          
+          for(int j=0;j<1000;++j) {
+            PTT = PTT | 0x20;      //make PT5=1
+            MSDelay(a[i]);         //change the delay size to see what happens
+            PTT = PTT & 0xDF;      //Make PT5=0
+            MSDelay(a[i]);         //change delay size....
+          }
+      
+        }
+       
 
       }
 
@@ -30,5 +41,5 @@ void MSDelay(unsigned int itime)  //msec delay
   {
     unsigned int i; unsigned int j;
     for(i=0;i<itime;i++)
-      for(j=0;j<4000;j++);
+      for(j=0;j<400;j++);
   }
