@@ -1,5 +1,5 @@
 *** EVALUATION ***
-PROGRAM "E:\Project\hcs12_c\bin\Project.absHCS12_Serial_Monitor.abs"
+PROGRAM "E:\gitbill\hcs12_c\bin\Project.absHCS12_Serial_Monitor.abs"
 
 *********************************************************************************************
 TARGET SECTION
@@ -14,7 +14,7 @@ FILE SECTION
 ---------------------------------------------------------------------------------------------
 mc9s12dg256.c.o                         Model: BANKED,        Lang: ANSI-C
 Start12.cpp.o                           Model: BANKED,        Lang: C++
-CW_TogglePT5_Buzzer_Cprog.cpp.o         Model: BANKED,        Lang: C++
+3 加入时间二维因素.cpp.o                Model: BANKED,        Lang: C++
 
 *********************************************************************************************
 STARTUP SECTION
@@ -37,7 +37,7 @@ Section Name                    Size  Type     From       To       Segment
 .init                             11     R     0xC000     0xC00A   ROM_C000
 .startData                        18     R     0xC00B     0xC01C   ROM_C000
 .copy                              2     R     0xC01D     0xC01E   ROM_C000
-.text                            202     R   0x308000   0x3080C9   PAGE_30
+.text                            260     R   0x308000   0x308103   PAGE_30
 .stack                           256   R/W     0x1000     0x10FF   RAM
 .abs_section_8                     1   N/I        0x8        0x8   .absSeg0
 .abs_section_9                     1   N/I        0x9        0x9   .absSeg1
@@ -383,7 +383,7 @@ Section Name                    Size  Type     From       To       Segment
 .vectSeg341_vect                   2     R     0xFFFE     0xFFFF   .vectSeg341
 
 Summary of section sizes per section type:
-READ_ONLY (R):          EB (dec:      235)
+READ_ONLY (R):         125 (dec:      293)
 READ_WRITE (R/W):      100 (dec:      256)
 NO_INIT (N/I):         190 (dec:      400)
 
@@ -749,10 +749,10 @@ MODULE:                 -- Start12.cpp.o --
      _startupData                              C00B       E      14       5   .startData  
 - LABELS:
      __SEG_END_SSTACK                          1100       0       0       1               
-MODULE:                 -- CW_TogglePT5_Buzzer_Cprog.cpp.o --
+MODULE:                 -- 3 加入时间二维因素.cpp.o --
 - PROCEDURES:
-     main                                    30803E      6D     109       2   .text       
-     MSDelay__FUi                            3080AB      1F      31       4   .text       
+     main                                    30803E      A7     167       3   .text       
+     MSDelay__FUi                            3080E5      1F      31       4   .text       
 - VARIABLES:
 
 *********************************************************************************************
@@ -761,7 +761,7 @@ MODULE STATISTIC
 ---------------------------------------------------------------------------------------------
   mc9s12dg256.c.o                            400      0      0
   Start12.cpp.o                                0     73      0
-  CW_TogglePT5_Buzzer_Cprog.cpp.o              0    140      0
+  3 加入时间二维因素.cpp.o                     0    198      0
   other                                      256     20      2
 
 *********************************************************************************************
@@ -1801,8 +1801,8 @@ OBJECT LIST SORTED BY ADDRESS
      _CAN4TXTSR                                 2BE       2       2       0   .abs_section_2be
      _Startup                                  C000       B      11       0   .init       
      Init__Fv                                308000      3E      62       2   .text       
-     main                                    30803E      6D     109       2   .text       
-     MSDelay__FUi                            3080AB      1F      31       4   .text       
+     main                                    30803E      A7     167       3   .text       
+     MSDelay__FUi                            3080E5      1F      31       4   .text       
 
 *********************************************************************************************
 UNUSED-OBJECTS SECTION
@@ -1820,7 +1820,7 @@ OBJECT-DEPENDENCIES SECTION
 ---------------------------------------------------------------------------------------------
 _Startup                  USES __SEG_END_SSTACK Init__Fv main 
 Init__Fv                  USES _startupData 
-main                      USES _DDRT _PTT MSDelay__FUi 
+main                      USES _DDRT _PTT MSDelay__FUi main 
 
 *********************************************************************************************
 DEPENDENCY TREE
@@ -1844,5 +1844,5 @@ STATISTIC SECTION
 ExeFile:
 --------
 Number of blocks to be downloaded: 5
-Total size of all blocks to be downloaded: 235
+Total size of all blocks to be downloaded: 293
 
