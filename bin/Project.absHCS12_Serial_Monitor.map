@@ -1,5 +1,5 @@
 *** EVALUATION ***
-PROGRAM "E:\gitbill\hcs12_c\bin\Project.absHCS12_Serial_Monitor.abs"
+PROGRAM "E:\gitbill\hcs12_dragon12_c\bin\Project.absHCS12_Serial_Monitor.abs"
 
 *********************************************************************************************
 TARGET SECTION
@@ -14,33 +14,32 @@ FILE SECTION
 ---------------------------------------------------------------------------------------------
 mc9s12dg256.c.o                         Model: BANKED,        Lang: ANSI-C
 Start12.cpp.o                           Model: BANKED,        Lang: C++
-4 test super mario.cpp.o                Model: BANKED,        Lang: C++
+STRING.C.o (ansibi.lib)                 Model: BANKED,        Lang: ANSI-C
+6 Name on Marquis Lights.cpp.o          Model: BANKED,        Lang: C++
 
 *********************************************************************************************
 STARTUP SECTION
 ---------------------------------------------------------------------------------------------
 Entry point: 0xC000 (_Startup)
-_startupData is allocated at 0xC00B and uses 14 Bytes
+_startupData is allocated at 0xC015 and uses 14 Bytes
 extern struct _tagStartup {
-  unsigned nofZeroOut     1
-  _Range   pZeroOut       0x1100     312
-  _Copy    *toCopyDownBeg 0xC01D
+  unsigned nofZeroOut     0
+  _Copy    *toCopyDownBeg 0xC027
   int      nofInitBodies  0
-  _Cpp     *initBodies    0xC01D
+  _Cpp     *initBodies    0xC023
   int      nofFiniBodies  0
-  _Cpp     *finiBodies    0xC01D
+  _Cpp     *finiBodies    0xC023
 } _startupData;
 
 *********************************************************************************************
 SECTION-ALLOCATION SECTION
 Section Name                    Size  Type     From       To       Segment
 ---------------------------------------------------------------------------------------------
-.init                             11     R     0xC000     0xC00A   ROM_C000
-.startData                        18     R     0xC00B     0xC01C   ROM_C000
-.copy                            318     R     0xC01D     0xC15A   ROM_C000
-.text                            184     R   0x308000   0x3080B7   PAGE_30
+.init                             21     R     0xC000     0xC014   ROM_C000
+.startData                        18     R     0xC015     0xC026   ROM_C000
+.copy                              2     R     0xC027     0xC028   ROM_C000
+.text                            531     R   0x308000   0x308212   PAGE_30
 .stack                           256   R/W     0x1000     0x10FF   RAM
-.data                            312   R/W     0x1100     0x1237   RAM
 .abs_section_8                     1   N/I        0x8        0x8   .absSeg0
 .abs_section_9                     1   N/I        0x9        0x9   .absSeg1
 .abs_section_a                     1   N/I        0xA        0xA   .absSeg2
@@ -385,8 +384,8 @@ Section Name                    Size  Type     From       To       Segment
 .vectSeg341_vect                   2     R     0xFFFE     0xFFFF   .vectSeg341
 
 Summary of section sizes per section type:
-READ_ONLY (R):         215 (dec:      533)
-READ_WRITE (R/W):      238 (dec:      568)
+READ_ONLY (R):         23E (dec:      574)
+READ_WRITE (R/W):      100 (dec:      256)
 NO_INIT (N/I):         190 (dec:      400)
 
 *********************************************************************************************
@@ -428,8 +427,8 @@ MODULE:                 -- mc9s12dg256.c.o --
      _BKP1H                                      2E       1       1       0   .abs_section_2e
      _BKP1L                                      2F       1       1       0   .abs_section_2f
      _PPAGE                                      30       1       1       0   .abs_section_30
-     _PORTK                                      32       1       1       0   .abs_section_32
-     _DDRK                                       33       1       1       0   .abs_section_33
+     _PORTK                                      32       1       1      16   .abs_section_32
+     _DDRK                                       33       1       1       1   .abs_section_33
      _SYNR                                       34       1       1       0   .abs_section_34
      _REFDV                                      35       1       1       0   .abs_section_35
      _CRGFLG                                     37       1       1       0   .abs_section_37
@@ -582,9 +581,9 @@ MODULE:                 -- mc9s12dg256.c.o --
      _CAN0TXDSR7                                17B       1       1       0   .abs_section_17b
      _CAN0TXDLR                                 17C       1       1       0   .abs_section_17c
      _CAN0TXTBPR                                17D       1       1       0   .abs_section_17d
-     _PTT                                       240       1       1       2   .abs_section_240
+     _PTT                                       240       1       1       0   .abs_section_240
      _PTIT                                      241       1       1       0   .abs_section_241
-     _DDRT                                      242       1       1       1   .abs_section_242
+     _DDRT                                      242       1       1       0   .abs_section_242
      _RDRT                                      243       1       1       0   .abs_section_243
      _PERT                                      244       1       1       0   .abs_section_244
      _PPST                                      245       1       1       0   .abs_section_245
@@ -746,35 +745,42 @@ MODULE:                 -- mc9s12dg256.c.o --
 MODULE:                 -- Start12.cpp.o --
 - PROCEDURES:
      Init__Fv                                308000      3E      62       2   .text       
-     _Startup                                  C000       B      11       0   .init       
+     _Startup                                  C000      15      21       0   .init       
 - VARIABLES:
-     _startupData                              C00B       E      14       5   .startData  
+     _startupData                              C015       E      14       5   .startData  
 - LABELS:
      __SEG_END_SSTACK                          1100       0       0       1               
-MODULE:                 -- 4 test super mario.cpp.o --
+MODULE:                 -- STRING.C.o (ansibi.lib) --
 - PROCEDURES:
-     main                                    30803E      5B      91       2   .text       
-     MSDelay__FUi                            308099      1F      31       4   .text       
+     strlen                                  30803E      14      20       2   .text       
 - VARIABLES:
-     melody                                    1100      9C     156       3   .data       
-     tempo                                     119C      9C     156       1   .data       
+MODULE:                 -- 6 Name on Marquis Lights.cpp.o --
+- PROCEDURES:
+     main                                    308052      86     134       2   .text       
+     LShiftStr__FPSc                         3080D8      3A      58       2   .text       
+     DisplayStr__FPSc                        308112      31      49       2   .text       
+     CleanScr__Fv                            308143      1B      27       2   .text       
+     COMWRT4__FUc                            30815E      4B      75      10   .text       
+     DATWRT4__FUc                            3081A9      4B      75       2   .text       
+     MSDelay__FUi                            3081F4      1F      31      16   .text       
+- VARIABLES:
 
 *********************************************************************************************
 MODULE STATISTIC
   Name                                      Data   Code  Const
 ---------------------------------------------------------------------------------------------
   mc9s12dg256.c.o                            400      0      0
-  Start12.cpp.o                                0     73      0
-  4 test super mario.cpp.o                   312    122      0
-  other                                      256     20    318
+  Start12.cpp.o                                0     83      0
+  STRING.C.o (ansibi.lib)                      0     20      0
+  6 Name on Marquis Lights.cpp.o               0    449      0
+  other                                      256     20      2
 
 *********************************************************************************************
 SECTION USE IN OBJECT-ALLOCATION SECTION
 ---------------------------------------------------------------------------------------------
 SECTION: ".text"
-  Init__Fv main MSDelay__FUi 
-SECTION: ".data"
-  melody tempo 
+  Init__Fv strlen main LShiftStr__FPSc DisplayStr__FPSc CleanScr__Fv 
+  COMWRT4__FUc DATWRT4__FUc MSDelay__FUi 
 SECTION: ".init"
   _Startup 
 SECTION: ".abs_section_8"
@@ -1493,8 +1499,8 @@ OBJECT LIST SORTED BY ADDRESS
      _BKP1H                                      2E       1       1       0   .abs_section_2e
      _BKP1L                                      2F       1       1       0   .abs_section_2f
      _PPAGE                                      30       1       1       0   .abs_section_30
-     _PORTK                                      32       1       1       0   .abs_section_32
-     _DDRK                                       33       1       1       0   .abs_section_33
+     _PORTK                                      32       1       1      16   .abs_section_32
+     _DDRK                                       33       1       1       1   .abs_section_33
      _SYNR                                       34       1       1       0   .abs_section_34
      _REFDV                                      35       1       1       0   .abs_section_35
      _CRGFLG                                     37       1       1       0   .abs_section_37
@@ -1701,9 +1707,9 @@ OBJECT LIST SORTED BY ADDRESS
      _CAN0TXDLR                                 17C       1       1       0   .abs_section_17c
      _CAN0TXTBPR                                17D       1       1       0   .abs_section_17d
      _CAN0TXTSR                                 17E       2       2       0   .abs_section_17e
-     _PTT                                       240       1       1       2   .abs_section_240
+     _PTT                                       240       1       1       0   .abs_section_240
      _PTIT                                      241       1       1       0   .abs_section_241
-     _DDRT                                      242       1       1       1   .abs_section_242
+     _DDRT                                      242       1       1       0   .abs_section_242
      _RDRT                                      243       1       1       0   .abs_section_243
      _PERT                                      244       1       1       0   .abs_section_244
      _PPST                                      245       1       1       0   .abs_section_245
@@ -1805,105 +1811,33 @@ OBJECT LIST SORTED BY ADDRESS
      _CAN4TXDLR                                 2BC       1       1       0   .abs_section_2bc
      _CAN4TXTBPR                                2BD       1       1       0   .abs_section_2bd
      _CAN4TXTSR                                 2BE       2       2       0   .abs_section_2be
-     melody                                    1100      9C     156       3   .data       
-     tempo                                     119C      9C     156       1   .data       
-     _Startup                                  C000       B      11       0   .init       
+     _Startup                                  C000      15      21       0   .init       
      Init__Fv                                308000      3E      62       2   .text       
-     main                                    30803E      5B      91       2   .text       
-     MSDelay__FUi                            308099      1F      31       4   .text       
+     strlen                                  30803E      14      20       2   .text       
+     main                                    308052      86     134       2   .text       
+     LShiftStr__FPSc                         3080D8      3A      58       2   .text       
+     DisplayStr__FPSc                        308112      31      49       2   .text       
+     CleanScr__Fv                            308143      1B      27       2   .text       
+     COMWRT4__FUc                            30815E      4B      75      10   .text       
+     DATWRT4__FUc                            3081A9      4B      75       2   .text       
+     MSDelay__FUi                            3081F4      1F      31      16   .text       
 
 *********************************************************************************************
 UNUSED-OBJECTS SECTION
 ---------------------------------------------------------------------------------------------
+NOT USED PROCEDURES
+STRING.C.o (ansibi.lib):
+  strerror memchr memcmp memcpy2 memcpy _memcpy_8bitCount memmove memset 
+  _memset_clear_8bitCount strset strcat strncat strcpy strncpy strcmp strncmp 
+  strchr strrchr strspn strcspn strpbrk strstr strtok strcoll strxfrm 
 NOT USED VARIABLES
-4 test super mario.cpp.o:
-  underworld_melody underworld_tempo 
+STRING.C.o (ansibi.lib):
+  STRING..1 next.2 
 
 *********************************************************************************************
 COPYDOWN SECTION
 ---------------------------------------------------------------------------------------------
-------- ROM-ADDRESS: 0xC01D ---- SIZE       4 ---
-Filling bytes inserted
- 01381100
-------- ROM-ADDRESS: 0xC021 ---- RAM-ADDRESS: 0x1100 ---- SIZE      18 ---
-Name of initialized Object : melody
- 0A4D0A4D00 000A4D0000 082D0A4D00
- 000C40
-------- ROM-ADDRESS: 0xC033 ---- SIZE       6 ---
-Filling bytes inserted
- 0000000000 00
-------- ROM-ADDRESS: 0xC039 ---- RAM-ADDRESS: 0x1118 ---- SIZE       2 ---
-Name of initialized Object : melody:24
- 0620
-------- ROM-ADDRESS: 0xC03B ---- SIZE       6 ---
-Filling bytes inserted
- 0000000000 00
-------- ROM-ADDRESS: 0xC041 ---- RAM-ADDRESS: 0x1120 ---- SIZE       2 ---
-Name of initialized Object : melody:32
- 082D
-------- ROM-ADDRESS: 0xC043 ---- SIZE       4 ---
-Filling bytes inserted
- 00000000
-------- ROM-ADDRESS: 0xC047 ---- RAM-ADDRESS: 0x1126 ---- SIZE       2 ---
-Name of initialized Object : melody:38
- 0620
-------- ROM-ADDRESS: 0xC049 ---- SIZE       4 ---
-Filling bytes inserted
- 00000000
-------- ROM-ADDRESS: 0xC04D ---- RAM-ADDRESS: 0x112C ---- SIZE       2 ---
-Name of initialized Object : melody:44
- 0527
-------- ROM-ADDRESS: 0xC04F ---- SIZE       4 ---
-Filling bytes inserted
- 00000000
-------- ROM-ADDRESS: 0xC053 ---- RAM-ADDRESS: 0x1132 ---- SIZE      40 ---
-Name of initialized Object : melody:50
- 06E0000007 B800000749 06E0000006
- 200A4D0C40 0DC000000A EA0C400000
- 0A4D000008 2D092D07B8
-------- ROM-ADDRESS: 0xC07B ---- SIZE       4 ---
-Filling bytes inserted
- 00000000
-------- ROM-ADDRESS: 0xC07F ---- RAM-ADDRESS: 0x115E ---- SIZE       2 ---
-Name of initialized Object : melody:94
- 082D
-------- ROM-ADDRESS: 0xC081 ---- SIZE       4 ---
-Filling bytes inserted
- 00000000
-------- ROM-ADDRESS: 0xC085 ---- RAM-ADDRESS: 0x1164 ---- SIZE       2 ---
-Name of initialized Object : melody:100
- 0620
-------- ROM-ADDRESS: 0xC087 ---- SIZE       4 ---
-Filling bytes inserted
- 00000000
-------- ROM-ADDRESS: 0xC08B ---- RAM-ADDRESS: 0x116A ---- SIZE       2 ---
-Name of initialized Object : melody:106
- 0527
-------- ROM-ADDRESS: 0xC08D ---- SIZE       4 ---
-Filling bytes inserted
- 00000000
-------- ROM-ADDRESS: 0xC091 ---- RAM-ADDRESS: 0x1170 ---- SIZE      40 ---
-Name of initialized Object : melody:112
- 06E0000007 B800000749 06E0000006
- 200A4D0C40 0DC000000A EA0C400000
- 0A4D000008 2D092D07B8
-------- ROM-ADDRESS: 0xC0B9 ---- SIZE       5 ---
-Filling bytes inserted
- 0000000000
-------- ROM-ADDRESS: 0xC0BE ---- RAM-ADDRESS: 0x119D ---- SIZE     155 ---
-Name of initialized Object : tempo:1
- 0C000C000C 000C000C00 0C000C000C
- 000C000C00 0C000C000C 000C000C00
- 0C000C000C 000C000C00 0C000C000C
- 000C000C00 0C000C000C 000C000C00
- 0C000C0009 0009000900 0C000C000C
- 000C000C00 0C000C000C 000C000C00
- 0C000C000C 000C000C00 0C000C000C
- 000C000C00 0C000C000C 000C000C00
- 0C000C000C 0009000900 09000C000C
- 000C000C00 0C000C000C 000C000C00
- 0C000C000C
-------- ROM-ADDRESS: 0xC159 ---- SIZE       2 ---
+------- ROM-ADDRESS: 0xC027 ---- SIZE       2 ---
 Filling bytes inserted
  0000
 
@@ -1912,7 +1846,13 @@ OBJECT-DEPENDENCIES SECTION
 ---------------------------------------------------------------------------------------------
 _Startup                  USES __SEG_END_SSTACK Init__Fv main 
 Init__Fv                  USES _startupData 
-main                      USES _DDRT _PTT melody MSDelay__FUi tempo 
+main                      USES _DDRK COMWRT4__FUc MSDelay__FUi 
+                                DisplayStr__FPSc LShiftStr__FPSc 
+LShiftStr__FPSc           USES strlen 
+DisplayStr__FPSc          USES CleanScr__Fv DATWRT4__FUc MSDelay__FUi 
+CleanScr__Fv              USES COMWRT4__FUc MSDelay__FUi 
+COMWRT4__FUc              USES _PORTK MSDelay__FUi 
+DATWRT4__FUc              USES _PORTK MSDelay__FUi 
 
 *********************************************************************************************
 DEPENDENCY TREE
@@ -1921,8 +1861,30 @@ DEPENDENCY TREE
  | 
  +- main                
  |  | 
- |  +- MSDelay__FUi        
- |       
+ |  +- COMWRT4__FUc        
+ |  |  | 
+ |  |  +- MSDelay__FUi        
+ |  |       
+ |  +- MSDelay__FUi         (see above)
+ |  |  
+ |  +- DisplayStr__FPSc    
+ |  |  | 
+ |  |  +- CleanScr__Fv        
+ |  |  |  | 
+ |  |  |  +- COMWRT4__FUc         (see above)
+ |  |  |  |  
+ |  |  |  +- MSDelay__FUi         (see above)
+ |  |  |     
+ |  |  +- DATWRT4__FUc        
+ |  |  |  | 
+ |  |  |  +- MSDelay__FUi         (see above)
+ |  |  |     
+ |  |  +- MSDelay__FUi         (see above)
+ |  |     
+ |  +- LShiftStr__FPSc     
+ |     | 
+ |     +- strlen              
+ |          
  +- _Startup            
     | 
     +- Init__Fv            
@@ -1936,5 +1898,5 @@ STATISTIC SECTION
 ExeFile:
 --------
 Number of blocks to be downloaded: 5
-Total size of all blocks to be downloaded: 533
+Total size of all blocks to be downloaded: 574
 
